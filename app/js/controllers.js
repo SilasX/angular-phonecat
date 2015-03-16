@@ -17,5 +17,7 @@ phonecatApp.controller('PhoneListCtrl', function($scope) {
      'age': 3}
   ];
 
-  $scope.orderProp = 'age';
+  $scope.donkey = "nothing";
+
+  $scope.orderProp = 'snippet';
 });

@@ -20,8 +20,12 @@
         <select ng-model="orderProp">
           <option value="name">Alphabetical</option>
           <option value="age">Newest</option>
+          <option value="-age">Oldest</option>
+          <option value="snippet.length">Bizarreness</option>
+          <option value="snippet">Description</option>
         </select>
 
+        <p>{{orderProp}}</p>
       </div>
       <div class="col-md-10">
         <!--Body content-->

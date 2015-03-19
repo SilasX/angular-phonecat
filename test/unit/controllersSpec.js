@@ -16,11 +16,14 @@ describe('PhoneCat controllers', function() {
 
   describe('PhoneListCtrl', function(){
     var scope, ctrl, $httpBackend;
+    var phoneData = [
+      {name: "Motorola XOOM\u2122 with Wi-Fi"},
+      {name: "MOTOROLA XOOM\u2122"}
+    ]
 
     beforeEach(inject(function(_$httpBackend_, $rootScope, $controller) {
       $httpBackend = _$httpBackend_;
-      $httpBackend.expectGET('phones/phones.json').
-          respond([{name: 'Nexus S'}, {name: 'Motorola DROID'}]);
+      $httpBackend.expectGET('phones/phones.json').respond(phoneData);
 
       scope = $rootScope.$new();
       ctrl = $controller('PhoneListCtrl', {$scope: scope});
@@ -31,8 +34,7 @@ describe('PhoneCat controllers', function() {
       expect(scope.phones).toEqualData([]);
       $httpBackend.flush();
 
-      expect(scope.phones).toEqualData(
-          [{name: 'Nexus S'}, {name: 'Motorola DROID'}]);
+      expect(scope.phones).toEqualData(phoneData);
     });
 
 

@@ -4,9 +4,13 @@
 
 var phonecatControllers = angular.module('phonecatControllers', []);
 
-phonecatControllers.controller('PhoneListCtrl', ['$scope', 'Phone',
-  function($scope, Phone) {
-    $scope.phones = Phone.query();
+phonecatControllers.controller('PhoneListCtrl',
+  ['$scope', 'Phone', '$http',
+  function($scope, Phone, $http) {
+    //$scope.phones = Phone.query();
+    $http.get('phones/phones.json').success(function(data) {
+      $scope.phones = data.slice(0, 2);
+    });
     $scope.orderProp = 'age';
   }]);
 
